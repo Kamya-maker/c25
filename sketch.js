@@ -3,6 +3,7 @@ const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
+const Render = Matter.Render;
 
 var dustbinImg,paperImg
 
@@ -19,14 +20,14 @@ function setup() {
 	world = engine.world;
 
 	//Create the Bodies Here.
-     ground = new Ground(400,670,800,20);
+     ground = new Ground(400,670,800,10);
      ball = new Ball(100,100,20);
-     basket1= new Basket(500,610,20,100);
-     basket2= new Basket(600,650,180,20);
-     basket3= new Basket(700,610,20,100);
+     basket1= new Basket();
+     basket2= new Basket();
+     basket3= new Basket();
      
 
-	Engine.run(engine);
+     var render = Render.create({ element: document.body, engine: engine, options: { width: 1600, height: 700, wireframes: false } }); Engine.run(engine); Render.run(render);
   
 }
 
@@ -35,7 +36,7 @@ function draw() {
   Engine.update(engine);
   rectMode(CENTER);
   
-  background(0);
+  background("white");
   ground.display();
   ball.display();
   basket1.display();

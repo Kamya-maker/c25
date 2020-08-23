@@ -1,20 +1,27 @@
 class Basket{
-    constructor(x,y,width,height){
+    constructor(){
         var options={
             isStatic:true
             
         }
-        this.body = Bodies.rectangle(x,y,width,height,options);
-      this.width = width;
-      this.height = height;
-      this.image = loadImage("Image/dustbingreen.png");
-      World.add(world, this.body);
+        this.image=loadImage("Images/dustbingreen.png");
+        this.left = Bodies.rectangle(500,610,20,100,options);
+        this.center = Bodies.rectangle(600,650,180,20,options);
+        this.right = Bodies.rectangle(700,610,20,100,options);
+
+
+        
+     
+ 
+      World.add(world, this.left);
+      World.add(world, this.right);
+      World.add(world, this.center);
+
     }
     display(){
-     
-       fill("white")
-rect(this.body.position.x,this.body.position.y,this.width,this.height);
-image(this.image, 0, 0, this.width, this.height);
+ var pos=this.center.position;
+ imageMode(CENTER);
+image(this.image,616,620,170,116);
 
     } 
 }
